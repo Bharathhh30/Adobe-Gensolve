@@ -8,10 +8,10 @@ from werkzeug.utils import secure_filename
 from pyngrok import ngrok
 
 
-ngrok.set_auth_token("2iXWagsnReYrk3koiGdh5L4ccPC_3a1QdhdzMBEvSGH8aQvD1")  # Replace with your ngrok authentication token
+# ngrok.set_auth_token("2iXWagsnReYrk3koiGdh5L4ccPC_3a1QdhdzMBEvSGH8aQvD1")  # Replace with your ngrok authentication token
 
 # Start ngrok with the named tunnel configuration
-ngrok_tunnel = ngrok.connect("my_tunnel")  # Assuming ngrok.yml is in the default location
+# ngrok_tunnel = ngrok.connect("my_tunnel")  # Assuming ngrok.yml is in the default location
 
 app = Flask(__name__)
 
