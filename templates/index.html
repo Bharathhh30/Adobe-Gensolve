@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gensolve</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #input {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        #input label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #file-info {
+            display: none;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        #file-name {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .buttons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .buttons button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .buttons .delete-btn {
+            background-color: #dc3545;
+        }
+
+        .buttons .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <div>
+        <h3>Adobe Walo ko Namaste</h3>
+    </div>
+    
+    <div id="input">
+        
+        <form id="upload-form" action="/outputkeliye" method="post" enctype="multipart/form-data">
+            <label for="input-image">Drop the image here</label>
+            <input type="file" id="input-image" name="input-image" accept="image/*" required>
+            <div id="file-info">
+                <span id="file-name"></span>
+                <div class="buttons">
+                    <button type="button" id="delete-btn" class="delete-btn">Delete</button>
+                    <button type="button" id="select-btn">Select Another</button>
+                    <button type="submit" id="submit-btn" style="color: cornsilk;">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const inputImage = document.getElementById('input-image');
+        const fileInfo = document.getElementById('file-info');
+        const fileName = document.getElementById('file-name');
+        const deleteBtn = document.getElementById('delete-btn');
+        const selectBtn = document.getElementById('select-btn');
+
+        inputImage.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                fileName.textContent = `Selected file: ${file.name}`;
+                fileInfo.style.display = 'block';
+            }
+        });
+
+        deleteBtn.addEventListener('click', function() {
+            inputImage.value = '';
+            fileInfo.style.display = 'none';
+        });
+
+        selectBtn.addEventListener('click', function() {
+            inputImage.click();
+        });
+    </script>
+</body>
+</html>
